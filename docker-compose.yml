@@ -1,0 +1,13 @@
+# dockerの最新バージョンが3
+version: '3'
+
+services:
+  #サービスとしてwebが定義されてる。ここにdbとかもくる。
+  web:
+    build: .
+    command: python3 /app/app.py
+    volumes: 
+      - ./app:/app
+    ports:
+      # localhostの5000と向こうのlocalhostの5000をつなげてる。お陰で、http://0.0.0.0:5000/でアクセスできる
+      - 5000:5000
